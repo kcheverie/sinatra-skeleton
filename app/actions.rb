@@ -17,7 +17,7 @@ helpers do
   def current_user
     User.find_by(id: session[:user_id])
   end
-  
+
 end
 
 get '/' do
@@ -65,3 +65,16 @@ get '/logout' do
   erb(:index)
 end
 
+
+get '/private' do
+  erb(:private)
+end
+
+before '/private' do
+  if current_user
+    return
+  else
+    redirect to('/login')
+  end
+  # redirect to('/login') unless current_user
+end
