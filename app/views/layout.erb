@@ -23,12 +23,12 @@
     <header class="header">
       <div class="name">My Sinatra App</div>
       <div class="login">
-        <% if current_user %>
-          Welcome <%= current_user.username %>
-          <a href='/logout'>Logout</a>
-        <% else %>
-          <a href='/login'>Login</a>
-        <% end %>
+          <% if current_user %>
+            <%= current_user.username %>
+            <a href='/logout'>Logout</a>
+          <% else %>
+            <a href='/login'>Login</a>
+          <% end %>
       </div>
     </header>
 
