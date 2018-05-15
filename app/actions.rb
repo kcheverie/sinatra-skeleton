@@ -12,7 +12,7 @@ ruby = {
 
 pets = [mookie, ruby]
 
-helpers do 
+helpers do
 
   def current_user
     User.find_by(id: session[:user_id])
@@ -47,22 +47,20 @@ post '/login' do
     if user.password == password
       session[:user_id] = user.id
       "Hello #{user.username}"
-    else 
+    else
       "wrong password"
     end
-  else 
+  else
     "No user with that username"
   end
   session.to_s
 
 end
 
-# before '/private' do
-#   redirect to('/login') unless current_user
-# end
+before '/private' do
+  halt(401, erb(:error_401)) unless current_user
+end
 
 get '/private' do
-  halt(404, erb(:error_404)) unless current_user
-  # erb(:private)
-
+  erb(:private)
 end

@@ -23,18 +23,33 @@ li {
 }
 
 .header {
-  background-color: cyan;
+  background-color: orange;
   padding: 20px;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  @include breakpoint(small) {
+    /// for small screen size only
+  }
 }
 
-@media (max-width: 667px) {
-
+@media (min-width: 400px) {
   .header {
-    background-color: transparent;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: red;
   }
+}
 
+@media (min-width: 1200px) {
+  .header {
+    background-color: white;
+  }
+}
+
+
+@media (min-width: 400px) and (max-width: 1199px) {
+  .header {
+    border-bottom: 10px solid pink;
+  }
 }
